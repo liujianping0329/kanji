@@ -5,6 +5,8 @@ import com.goldhako.kanji.service.CustomerService;
 import com.goldhako.kanji.service.impl.CustomerServiceImpl;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
@@ -24,11 +26,14 @@ public class MainView extends VerticalLayout {
     private CustomerService customerService;
 
     private Grid<Customer> grid = new Grid<>();
-
+    private Label label = new Label();
+    private Image image = new Image();
     private TextField filterText = new TextField();
     public MainView(CustomerService customerService) {
         this.customerService=customerService;
         customerService.findAll();
+        label.setText("ffgg");
+        image.setSrc("cdcd");
         filterText.setPlaceholder("Filter by name...");
         filterText.setValueChangeMode(ValueChangeMode.EAGER);
         filterText.addValueChangeListener(e -> updateList());
@@ -38,20 +43,17 @@ public class MainView extends VerticalLayout {
         HorizontalLayout filtering = new HorizontalLayout(filterText,
                 clearFilterTextBtn);
 
-
-
-
         Button button = new Button("Click me",
                 event -> Notification.show("Clicked!"));
         add(button);
         grid.setSizeFull();
-
         grid.addColumn(Customer::getFirstName).setHeader("First name");
         grid.addColumn(Customer::getLastName).setHeader("Last name");
         grid.addColumn(Customer::getStatus).setHeader("Status");
-        add(filtering,grid);
+        add(filtering,grid,label,image);
         setHeight("100vh");
         updateList();
+
     }
     public void updateList() {
         grid.setItems(customerService.findAll());
