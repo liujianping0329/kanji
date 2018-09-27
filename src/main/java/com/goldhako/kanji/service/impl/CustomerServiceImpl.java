@@ -10,6 +10,7 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,11 +26,16 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @SneakyThrows
     public List<Customer> findAll() {
-        log.info(new Date().getTime()+"");
-        FileInputStream fileInputStream=new FileInputStream("E://code//code.zip");
-        byte[] bytes=new byte[fileInputStream.available()];
-        fileInputStream.read(bytes);
-        log.info(new Date().getTime()+"");
+        long a, b;
+        a = new Date().getTime();
+        FileInputStream fileInputStream = new FileInputStream("E://code//code.zip");
+        BufferedInputStream bufferedInputStream=new BufferedInputStream(fileInputStream);
+        byte[] bytes = new byte[bufferedInputStream.available()];
+        bufferedInputStream.read(bytes);
+        b=new Date().getTime();
+        log.info((b-a)+"");
+
+
         return new ArrayList<>();
     }
 }
