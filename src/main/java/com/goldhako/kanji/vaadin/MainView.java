@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-@Route("")
+@Route("/vaadin")
 public class MainView extends VerticalLayout {
 
     private CustomerService customerService;
