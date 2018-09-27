@@ -10,6 +10,8 @@ import java.util.Date;
 public class YysPassPart implements Serializable {
     private Integer id;
 
+    private Integer passId;
+
     private Integer kamiId;
 
     private Date createAt;
@@ -24,6 +26,14 @@ public class YysPassPart implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getPassId() {
+        return passId;
+    }
+
+    public void setPassId(Integer passId) {
+        this.passId = passId;
     }
 
     public Integer getKamiId() {
@@ -63,6 +73,7 @@ public class YysPassPart implements Serializable {
         }
         YysPassPart other = (YysPassPart) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
+            && (this.getPassId() == null ? other.getPassId() == null : this.getPassId().equals(other.getPassId()))
             && (this.getKamiId() == null ? other.getKamiId() == null : this.getKamiId().equals(other.getKamiId()))
             && (this.getCreateAt() == null ? other.getCreateAt() == null : this.getCreateAt().equals(other.getCreateAt()))
             && (this.getUpdateAt() == null ? other.getUpdateAt() == null : this.getUpdateAt().equals(other.getUpdateAt()));
@@ -73,6 +84,7 @@ public class YysPassPart implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
+        result = prime * result + ((getPassId() == null) ? 0 : getPassId().hashCode());
         result = prime * result + ((getKamiId() == null) ? 0 : getKamiId().hashCode());
         result = prime * result + ((getCreateAt() == null) ? 0 : getCreateAt().hashCode());
         result = prime * result + ((getUpdateAt() == null) ? 0 : getUpdateAt().hashCode());
@@ -86,6 +98,7 @@ public class YysPassPart implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
+        sb.append(", passId=").append(passId);
         sb.append(", kamiId=").append(kamiId);
         sb.append(", createAt=").append(createAt);
         sb.append(", updateAt=").append(updateAt);

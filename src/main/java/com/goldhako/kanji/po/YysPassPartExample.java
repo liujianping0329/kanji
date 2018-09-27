@@ -185,6 +185,66 @@ public class YysPassPartExample {
             return (Criteria) this;
         }
 
+        public Criteria andPassIdIsNull() {
+            addCriterion("pass_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassIdIsNotNull() {
+            addCriterion("pass_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassIdEqualTo(Integer value) {
+            addCriterion("pass_id =", value, "passId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassIdNotEqualTo(Integer value) {
+            addCriterion("pass_id <>", value, "passId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassIdGreaterThan(Integer value) {
+            addCriterion("pass_id >", value, "passId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("pass_id >=", value, "passId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassIdLessThan(Integer value) {
+            addCriterion("pass_id <", value, "passId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassIdLessThanOrEqualTo(Integer value) {
+            addCriterion("pass_id <=", value, "passId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassIdIn(List<Integer> values) {
+            addCriterion("pass_id in", values, "passId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassIdNotIn(List<Integer> values) {
+            addCriterion("pass_id not in", values, "passId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassIdBetween(Integer value1, Integer value2) {
+            addCriterion("pass_id between", value1, value2, "passId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("pass_id not between", value1, value2, "passId");
+            return (Criteria) this;
+        }
+
         public Criteria andKamiIdIsNull() {
             addCriterion("kami_id is null");
             return (Criteria) this;

@@ -1,3 +1,38 @@
+create table kanji.yys_kami
+(
+	id int auto_increment
+		primary key,
+	name varchar(16) not null,
+	level int not null comment '等级',
+	type int default '0' null comment '1N 2R 3SR 4SSR',
+	remark varchar(64) not null comment '备注',
+	create_at timestamp default CURRENT_TIMESTAMP null,
+	update_at timestamp default CURRENT_TIMESTAMP null on update CURRENT_TIMESTAMP
+)
+comment '阴阳师式神' engine=InnoDB
+;
+
+create table kanji.yys_kami_skill
+(
+	id int auto_increment
+		primary key,
+	value int not null,
+	level int not null comment '等级 1D 2C 3B 4A 5S',
+	type int default '0' null comment '1攻击2生命3防御4速度5暴击6暴伤7命中8抵抗',
+	kami_id int not null comment '式神id',
+	remark varchar(64) not null comment '备注',
+	create_at timestamp default CURRENT_TIMESTAMP null,
+	update_at timestamp default CURRENT_TIMESTAMP null on update CURRENT_TIMESTAMP
+)
+comment '阴阳师式神属性' engine=InnoDB
+;
+
+create index yys_kami_skill_kami_id_index
+	on kanji.yys_kami_skill (kami_id)
+;
+
+
+
 CREATE TABLE `yys_pass` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(16) NOT NULL DEFAULT '',

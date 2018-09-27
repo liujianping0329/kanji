@@ -3,6 +3,7 @@
 <mapper namespace="com.goldhako.kanji.dao.YysPassPartDAO">
   <resultMap id="BaseResultMap" type="com.goldhako.kanji.po.YysPassPart">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pass_id" jdbcType="INTEGER" property="passId" />
     <result column="kami_id" jdbcType="INTEGER" property="kamiId" />
     <result column="create_at" jdbcType="TIMESTAMP" property="createAt" />
     <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, kami_id, create_at, update_at
+    id, pass_id, kami_id, create_at, update_at
   </sql>
   <select id="selectByExample" parameterType="com.goldhako.kanji.po.YysPassPartExample" resultMap="BaseResultMap">
     select
@@ -107,14 +108,17 @@
     </if>
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.goldhako.kanji.po.YysPassPart" useGeneratedKeys="true">
-    insert into yys_pass_part (kami_id, create_at, update_at
-      )
-    values (#{kamiId,jdbcType=INTEGER}, #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}
-      )
+    insert into yys_pass_part (pass_id, kami_id, create_at, 
+      update_at)
+    values (#{passId,jdbcType=INTEGER}, #{kamiId,jdbcType=INTEGER}, #{createAt,jdbcType=TIMESTAMP}, 
+      #{updateAt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.goldhako.kanji.po.YysPassPart" useGeneratedKeys="true">
     insert into yys_pass_part
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="passId != null">
+        pass_id,
+      </if>
       <if test="kamiId != null">
         kami_id,
       </if>
@@ -126,6 +130,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="passId != null">
+        #{passId,jdbcType=INTEGER},
+      </if>
       <if test="kamiId != null">
         #{kamiId,jdbcType=INTEGER},
       </if>
@@ -149,6 +156,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.passId != null">
+        pass_id = #{record.passId,jdbcType=INTEGER},
+      </if>
       <if test="record.kamiId != null">
         kami_id = #{record.kamiId,jdbcType=INTEGER},
       </if>
@@ -166,6 +176,7 @@
   <update id="updateByExample" parameterType="map">
     update yys_pass_part
     set id = #{record.id,jdbcType=INTEGER},
+      pass_id = #{record.passId,jdbcType=INTEGER},
       kami_id = #{record.kamiId,jdbcType=INTEGER},
       create_at = #{record.createAt,jdbcType=TIMESTAMP},
       update_at = #{record.updateAt,jdbcType=TIMESTAMP}
@@ -176,6 +187,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.goldhako.kanji.po.YysPassPart">
     update yys_pass_part
     <set>
+      <if test="passId != null">
+        pass_id = #{passId,jdbcType=INTEGER},
+      </if>
       <if test="kamiId != null">
         kami_id = #{kamiId,jdbcType=INTEGER},
       </if>
@@ -190,7 +204,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.goldhako.kanji.po.YysPassPart">
     update yys_pass_part
-    set kami_id = #{kamiId,jdbcType=INTEGER},
+    set pass_id = #{passId,jdbcType=INTEGER},
+      kami_id = #{kamiId,jdbcType=INTEGER},
       create_at = #{createAt,jdbcType=TIMESTAMP},
       update_at = #{updateAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
