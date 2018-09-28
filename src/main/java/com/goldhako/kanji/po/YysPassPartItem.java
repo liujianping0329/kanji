@@ -12,6 +12,8 @@ public class YysPassPartItem implements Serializable {
 
     private Integer kamiId;
 
+    private Integer amount;
+
     private Integer passPartId;
 
     private Date createAt;
@@ -34,6 +36,14 @@ public class YysPassPartItem implements Serializable {
 
     public void setKamiId(Integer kamiId) {
         this.kamiId = kamiId;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     public Integer getPassPartId() {
@@ -74,6 +84,7 @@ public class YysPassPartItem implements Serializable {
         YysPassPartItem other = (YysPassPartItem) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getKamiId() == null ? other.getKamiId() == null : this.getKamiId().equals(other.getKamiId()))
+            && (this.getAmount() == null ? other.getAmount() == null : this.getAmount().equals(other.getAmount()))
             && (this.getPassPartId() == null ? other.getPassPartId() == null : this.getPassPartId().equals(other.getPassPartId()))
             && (this.getCreateAt() == null ? other.getCreateAt() == null : this.getCreateAt().equals(other.getCreateAt()))
             && (this.getUpdateAt() == null ? other.getUpdateAt() == null : this.getUpdateAt().equals(other.getUpdateAt()));
@@ -85,6 +96,7 @@ public class YysPassPartItem implements Serializable {
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getKamiId() == null) ? 0 : getKamiId().hashCode());
+        result = prime * result + ((getAmount() == null) ? 0 : getAmount().hashCode());
         result = prime * result + ((getPassPartId() == null) ? 0 : getPassPartId().hashCode());
         result = prime * result + ((getCreateAt() == null) ? 0 : getCreateAt().hashCode());
         result = prime * result + ((getUpdateAt() == null) ? 0 : getUpdateAt().hashCode());
@@ -99,6 +111,7 @@ public class YysPassPartItem implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", kamiId=").append(kamiId);
+        sb.append(", amount=").append(amount);
         sb.append(", passPartId=").append(passPartId);
         sb.append(", createAt=").append(createAt);
         sb.append(", updateAt=").append(updateAt);

@@ -13,6 +13,7 @@ import com.goldhako.kanji.query.KamiQuery;
 import com.goldhako.kanji.service.KamiService;
 import com.goldhako.kanji.vo.KamiListVO;
 import com.goldhako.kanji.vo.KamiSkillVO;
+import com.goldhako.kanji.vo.PassVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -89,6 +90,5 @@ public class KamiServiceImpl implements KamiService {
         }).collect(Collectors.toList()));
         return pageInfo;
     }
-
 
 }

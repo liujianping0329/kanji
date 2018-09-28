@@ -6,4 +6,5 @@ import lombok.Data;
 public class PassPartItemQuery {
     private Integer kamiId;
     private Integer kamiName;
+    private Integer amount;
 }

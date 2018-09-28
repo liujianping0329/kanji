@@ -7,4 +7,6 @@ public interface PassService {
     Integer upsertPass(PassQuery passQuery);
 
     PassVO getPassInfo(Integer id);
+
+    PassVO getPassByPartItemId(Integer partItemId);
 }

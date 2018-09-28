@@ -6,10 +6,7 @@ import com.goldhako.kanji.service.PassChooseService;
 import com.goldhako.kanji.service.PassService;
 import com.goldhako.kanji.vo.PassVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +22,7 @@ public class PassChooseController {
     private PassChooseService passChooseService;
 
     @RequestMapping(value = "/kami", method = RequestMethod.GET)
-    public BaseResponse<List<PassVO>> kamiChoose(@RequestBody Integer kamiId) {
+    public BaseResponse<List<PassVO>> kamiChoose(@RequestParam(value = "kamiId") Integer kamiId) {
         return new BaseResponse<>(passChooseService.kamiChoose(kamiId));
     }
 

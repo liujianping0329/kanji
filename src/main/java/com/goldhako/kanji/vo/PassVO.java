@@ -10,4 +10,16 @@ public class PassVO {
 
     private String name;
     private List<PassPartVO> passPartVOS;
+
+    public int getCountByItemKamiId(Integer kamiId){
+        int count=0;
+        for (PassPartVO passPartVO : passPartVOS) {
+            for (PassPartItemVO passPartItemVO : passPartVO.getPassPartItemVOS()) {
+                if(passPartItemVO.getKamiId().equals(kamiId)){
+                    count+=passPartItemVO.getAmount();
+                }
+            }
+        }
+        return count;
+    }
 }

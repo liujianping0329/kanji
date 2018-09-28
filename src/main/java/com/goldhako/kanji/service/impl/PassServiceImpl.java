@@ -94,4 +94,12 @@ public class PassServiceImpl implements PassService {
         }).collect(Collectors.toList()));
         return passVO;
     }
+
+    @Override
+    public PassVO getPassByPartItemId(Integer partItemId){
+        YysPassPartItem yysPassPartItem = yysPassPartItemDAO.selectByPrimaryKey(partItemId);
+        YysPassPart yysPassPart = yysPassPartDAO.selectByPrimaryKey(yysPassPartItem.getPassPartId());
+        YysPass yysPass = yysPassDAO.selectByPrimaryKey(yysPassPart.getPassId());
+        return getPassInfo(yysPass.getId());
+    }
 }

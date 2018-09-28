@@ -52,9 +52,11 @@ CREATE TABLE `yys_pass_part` (
 CREATE TABLE `yys_pass_part_item` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kami_id` int(11) NOT NULL DEFAULT '0',
+  `amount` int(11) NOT NULL DEFAULT '1',
   `pass_part_id` int(11) NOT NULL DEFAULT '0',
   `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `update_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
