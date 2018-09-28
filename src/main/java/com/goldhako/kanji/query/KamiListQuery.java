@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class KamiListQuery extends CommonPageBO {
+    private Integer id;
     private String name;
     private String nameLike;
     private Integer level;

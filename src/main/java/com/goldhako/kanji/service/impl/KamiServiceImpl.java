@@ -59,6 +59,9 @@ public class KamiServiceImpl implements KamiService {
     public PageInfo<KamiListVO> ListKami(KamiListQuery kamiListQuery) {
         YysKamiExample yysKamiExample=new YysKamiExample();
         YysKamiExample.Criteria criteria = yysKamiExample.createCriteria();
+        if(kamiListQuery.getId()!=null){
+            criteria.andIdEqualTo(kamiListQuery.getId());
+        }
         if(kamiListQuery.getLevel()!=null){
             criteria.andLevelEqualTo(kamiListQuery.getLevel());
         }
