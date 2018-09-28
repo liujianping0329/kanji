@@ -22,7 +22,9 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public BaseResponse<UserLoginVO> login(@RequestParam(value = "name")String name, @RequestParam(value = "password") String password) {
-        return new BaseResponse<>(userService.login(name,password));
+        UserLoginVO login = userService.login(name, password);
+        request.getSession().setAttribute("userInfo",login);
+        return new BaseResponse<>(login);
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
