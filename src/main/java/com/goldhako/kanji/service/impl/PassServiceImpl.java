@@ -6,6 +6,9 @@ import com.goldhako.kanji.dao.YysPassPartItemDAO;
 import com.goldhako.kanji.po.*;
 import com.goldhako.kanji.query.PassQuery;
 import com.goldhako.kanji.service.PassService;
+import com.goldhako.kanji.vo.PassPartItemVO;
+import com.goldhako.kanji.vo.PassPartVO;
+import com.goldhako.kanji.vo.PassVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,5 +67,31 @@ public class PassServiceImpl implements PassService {
             });
         });
         return passQuery.getPassPartQueries().size();
+    }
+
+    @Override
+    public PassVO getPassInfo(Integer id) {
+        PassVO passVO=new PassVO();
+        YysPass yysPass = yysPassDAO.selectByPrimaryKey(id);
+        BeanUtils.copyProperties(yysPass,passVO);
+
+        YysPassPartExample yysPassPartExample=new YysPassPartExample();
+        yysPassPartExample.createCriteria().andPassIdEqualTo(id);
+        List<YysPassPart> yysPassParts = yysPassPartDAO.selectByExample(yysPassPartExample);
+        passVO.setPassPartVOS(yysPassParts.stream().map(yysPassPart -> {
+            PassPartVO passPartVO=new PassPartVO();
+            BeanUtils.copyProperties(yysPassPart,passPartVO);
+
+            YysPassPartItemExample yysPassPartItemExample=new YysPassPartItemExample();
+            yysPassPartItemExample.createCriteria().andPassPartIdEqualTo(yysPassPart.getId());
+            List<YysPassPartItem> yysPassPartItems = yysPassPartItemDAO.selectByExample(yysPassPartItemExample);
+            passPartVO.setPassPartItemVOS(yysPassPartItems.stream().map(yysPassPartItem -> {
+                PassPartItemVO passPartItemVO=new PassPartItemVO();
+                BeanUtils.copyProperties(yysPassPartItem,passPartItemVO);
+                return passPartItemVO;
+            }).collect(Collectors.toList()));
+            return passPartVO;
+        }).collect(Collectors.toList()));
+        return passVO;
     }
 }
