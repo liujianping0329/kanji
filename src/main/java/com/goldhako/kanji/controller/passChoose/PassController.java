@@ -1,4 +1,4 @@
-package com.goldhako.kanji.controller;
+package com.goldhako.kanji.controller.passChoose;
 
 import com.goldhako.kanji.query.PassQuery;
 import com.goldhako.kanji.response.BaseResponse;

@@ -1,4 +1,4 @@
-package com.goldhako.kanji.controller;
+package com.goldhako.kanji.controller.passChoose;
 
 import com.github.pagehelper.PageInfo;
 import com.goldhako.kanji.query.KamiListQuery;

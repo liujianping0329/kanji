@@ -59,4 +59,39 @@ CREATE TABLE `yys_pass_part_item` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(16) NOT NULL DEFAULT '',
+  `password` varchar(16) NOT NULL DEFAULT '',
+  `remark` varchar(16) NOT NULL DEFAULT '',
+  `icon` varchar(128) NOT NULL DEFAULT '',
+  `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE `user_geo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lng` decimal(11,11) NOT NULL DEFAULT '0.00000000000',
+  `lat` decimal(11,11) NOT NULL DEFAULT '0.00000000000',
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `user_geo_article` (
+  `id` int(11) NOT NULL,
+  `geo_id` int(11) NOT NULL,
+  `pics` varchar(1024) NOT NULL DEFAULT '',
+  `remark` varchar(255) NOT NULL DEFAULT '',
+  `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 
