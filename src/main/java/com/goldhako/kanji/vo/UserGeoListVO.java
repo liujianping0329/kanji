@@ -1,12 +1,10 @@
-package com.goldhako.kanji.query;
+package com.goldhako.kanji.vo;
 
-import com.goldhako.kanji.bo.CommonPageBO;
 import lombok.Data;
 
 import java.math.BigDecimal;
-
 @Data
-public class UserGeoListQuery extends CommonPageBO {
+public class UserGeoListVO {
     private Integer id;
 
     private BigDecimal lng;
